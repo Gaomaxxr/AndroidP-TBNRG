@@ -20,12 +20,11 @@ public class CrimeLab {
 
     private CrimeLab(Context context) {
         mCrimeList = new ArrayList<>(); // 因为private List<Crime> mCrimeList已指明，故ArrayList<>可不写Crime
-        for (int i = 0; i < 100; i++) {
-            Crime crime = new Crime();
-            crime.setTitle("Crime #" + i);
-            crime.setSolved(i % 2 == 0);
-            mCrimeList.add(crime);
-        }
+
+    }
+
+    public void addCrime(Crime c) {
+        mCrimeList.add(c);
     }
 
     public List<Crime> getCrimeList() {
