@@ -33,7 +33,7 @@ public class CrimeListFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);    // 通知FragmentManager其管理的fragmen接收onCreateOptionsMenu()方法的调用
+        setHasOptionsMenu(true);    // 通知FragmentManager其管理的fragment接收onCreateOptionsMenu()方法的调用
     }
 
     @Nullable
@@ -167,6 +167,10 @@ public class CrimeListFragment extends Fragment {
         public int getItemCount() {
             return mCrimeList.size();
         }
+
+        public void setCrimeList(List<Crime> crimes) {
+            mCrimeList = crimes;
+        }
     }
 
     private void updateUI() {
@@ -177,6 +181,7 @@ public class CrimeListFragment extends Fragment {
             mAdapter = new CrimeAdapter(crimes);
             mCrimeRecyclerView.setAdapter(mAdapter);
         } else {
+            mAdapter.setCrimeList(crimes);
             mAdapter.notifyDataSetChanged();
         }
 
