@@ -80,10 +80,14 @@ public class CrimeFragment extends Fragment {
                 .updateCrime(mCrime);
     }
 
+    /**
+     * 创建与配置视图
+     * */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        // (资源id，父视图，是否将生成的视图添加给父视图)
         View v = inflater.inflate(R.layout.fragment_crime, container, false);
 
         mTitleField = (EditText) v.findViewById(R.id.crime_title);
