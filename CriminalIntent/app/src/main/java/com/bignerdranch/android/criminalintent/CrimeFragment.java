@@ -60,7 +60,7 @@ public class CrimeFragment extends Fragment {
         args.putSerializable(ARG_CRIME_ID, crimeId);
 
         CrimeFragment fragment = new CrimeFragment();
-        fragment.setArguments(args);
+        fragment.setArguments(args); // 附加argument bundle给fragment，必须在fragment创建后、添加给activity前完成
         return fragment;
     }
 
@@ -117,7 +117,7 @@ public class CrimeFragment extends Fragment {
                 FragmentManager manager = getFragmentManager();
                 DatePickerFragment dialog = DatePickerFragment
                         .newInstance(mCrime.getDate());
-                dialog.setTargetFragment(CrimeFragment.this, REQUEST_DATE);
+                dialog.setTargetFragment(CrimeFragment.this, REQUEST_DATE);  // 设置目标Fragment
                 dialog.show(manager, DIALOG_DATE);
             }
         });

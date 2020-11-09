@@ -57,7 +57,7 @@ public class CrimeListFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        updateUI();
+        updateUI();    // 从CrimeFragment返回后会调用onResume()刷新UI
     }
 
     @Override
@@ -142,6 +142,7 @@ public class CrimeListFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
+            // 启动CrimePagerActivity
             Intent intent = CrimePagerActivity.newIntent(getActivity(), mCrime.getId());
             startActivity(intent);
         }

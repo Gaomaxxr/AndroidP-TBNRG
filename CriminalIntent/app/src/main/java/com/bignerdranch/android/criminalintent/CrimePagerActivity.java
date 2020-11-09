@@ -36,17 +36,19 @@ public class CrimePagerActivity extends AppCompatActivity {
 
         UUID crimeId = (UUID) getIntent().getSerializableExtra(EXTRA_CRIME_ID);
 
-        mViewPager = (ViewPager) findViewById(R.id.crime_view_pager);
+        mViewPager = (ViewPager) findViewById(R.id.crime_view_pager);  // 在activity视图中找到ViewPager
 
-        mCrimes = CrimeLab.get(this).getCrimeList();
+        mCrimes = CrimeLab.get(this).getCrimeList();    // 从CrimeLab中获取数据集
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();  // 获取activity的FragmentManager实例
+
+        // 设置Adapter为FragmentStatePagerAdapter的一个匿名实例
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
             @NonNull
             @Override
             public Fragment getItem(int position) {
-                Crime crime = mCrimes.get(position);
-                return CrimeFragment.newInstance(crime.getId());
+                Crime crime = mCrimes.get(position);    // 获取数据集中指定位置的Crime实例
+                return CrimeFragment.newInstance(crime.getId());  // 利用该Crime实例的ID创建并返回一个经有效配置的CrimeFragment
             }
 
             @Override
